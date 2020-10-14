@@ -33,3 +33,5 @@ adv.forEach(item => {
     item.remove();
 });
 
+genre.textContent = 'Драма';
+
