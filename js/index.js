@@ -1,6 +1,17 @@
-'use strict'
+'use strict';
+
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    const movieDB = {
+        movies: [
+            "Логан",
+            "Лига справедливости",
+            "Ла-ла лэнд",
+            "Одержимость",
+            "Скотт Пилигрим против..."
+        ]
+    };
 
     const adv = document.querySelectorAll('.promo__adv img'),
         poster = document.querySelector('.promo__bg'),
@@ -63,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </li>
             `;
         });
+
         document.querySelectorAll('.delete').forEach((btn, i) => {
             btn.addEventListener('click', () => {
                 btn.parentElement.remove();
@@ -78,4 +90,3 @@ document.addEventListener('DOMContentLoaded', () => {
     createMovieList(movieDB.movies, movieList);
 
 });
-
