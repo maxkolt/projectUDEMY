@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 const movieDB = {
     movies: [
@@ -35,28 +35,39 @@ movieDB.movies.forEach((film, i) => {
     `;
 });
 
-
 document.addEventListener('DOMContentLoaded', () => {
 
-    const movieDB = {
-        movies: [
-            "Логан",
-            "Лига справедливости",
-            "Ла-ла лэнд",
-            "Одержимость",
-            "Скотт Пилигрим против..."
-        ]
-    };
+    const adv = document.querySelectorAll('.promo__adv img'),
+        poster = document.querySelector('.promo__bg'),
+        genre = poster.querySelector('.promo__genre'),
+        movieList = document.querySelector('.promo__interactive-list'),
+        addForm = document.querySelector('form.add'),
+        addInput = addForm.querySelector('.adding__input'),
+        checkbox = addForm.querySelector('[type="checkbox"]');
 
+    addForm.addEventListener('submit', (event) => {
+        event.preventDefault();
 
-const adv = document.querySelectorAll('.promo__adv img'),
-    poster = document.querySelector('.promo__bg'),
-    genre = poster.querySelector('.promo__genre'),
-    movieList = document.querySelector('.promo__interactive-list'),
-    addForm = document.querySelector('form.add'),
-    addInput = addForm.querySelector('.adding__input'),
-    checkbox = addForm.querySelector('[type="checkbox"]');
+        let newFilm = addInput.value;
+        const favorite = checkbox.checked;
 
-addForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-};
+        if (newFilm) {
+
+            if (newFilm.length > 21) {
+                newFilm = `${newFilm.substring(0, 22)}...`;
+            }
+
+            if (favorite) {
+                console.log("Добавляем любимый фильм");
+            }
+
+            movieDB.movies.push(newFilm);
+            sortArr(movieDB.movies);
+
+            createMovieList(movieDB.movies, movieList);
+        }
+
+        event.target.reset();
+
+    });
+
