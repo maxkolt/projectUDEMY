@@ -71,3 +71,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 
+    const deleteAdv = (arr) => {
+        arr.forEach(item => {
+            item.remove();
+        });
+    };
+
